@@ -17,21 +17,18 @@ public class LongestSubstringWithoutRepeatingCharacters
             indicate that character has not been visited yet. */
         var lastVisitedIndex = Enumerable.Repeat(-1,256).ToArray();
         
-        /* Mark first character as visited by storing the index
-            of first   character in visited array. */
         lastVisitedIndex[str[0]] = 0;
 
-        /* Start from the second character. First character is
-            already processed (cur_len and max_len are initialized
-            as 1, and visited[str[0]] is set */
-        for(int i=1;i<str.Length;i++)
+        for(int i = 1;i < str.Length; i++)
         {
             //  previous index
             var prevIndex = lastVisitedIndex[str[i]];
             
             /* If the currentt character is not present in the
            already processed substring or it is not part of
-           the current NRCS, then do cur_len++ */
+           the current non repeating current substring (NRCS), 
+           then currentLen++ */
+           
             if(prevIndex == -1 || i - currentLen > prevIndex)
             {
                 currentLen++;
@@ -45,10 +42,11 @@ public class LongestSubstringWithoutRepeatingCharacters
                should also check whether length of the
                previous NRCS was greater than max_len or
                not.*/
-                if(currentLen > maxLen)
+                if(currentLen > maxLen) {
                     maxLen = currentLen;
+                }
                     
-                currentLen=i-prevIndex;
+                currentLen = i - prevIndex;
             }
              // update the index of current character
             lastVisitedIndex[str[i]] = i;
@@ -56,8 +54,9 @@ public class LongestSubstringWithoutRepeatingCharacters
         
         // Compare the length of last NRCS with max_len and
         // update max_len if needed
-        if(currentLen > maxLen)
-            maxLen = currentLen;
+        if (currentLen > maxLen) {
+           maxLen = currentLen; 
+        }
             
         return maxLen;
     }
