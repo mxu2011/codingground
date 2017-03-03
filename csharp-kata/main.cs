@@ -1,10 +1,19 @@
 using System.IO;
 using System;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
-        Console.WriteLine("Hello, Coding Ground!");
+        test1();
+    }
+    
+    private static void test1() {
+        var str = "ABABDEDFBG";
+        
+        var obj = new LongestSubstringWithoutRepeatingCharacters();
+        
+        Console.WriteLine("Ths lenth of Longest substring (without repeating characters): {0}",
+        obj.FindLongestSubstringLength(str));        
     }
 }
