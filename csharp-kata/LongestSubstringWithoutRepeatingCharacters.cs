@@ -6,8 +6,12 @@ public class LongestSubstringWithoutRepeatingCharacters
 {
     public int FindLongestSubstringLength(string str)
     {
-        var currentLen =1; // lenght of current substring
-        var maxLen = 1; // result
+        if (str == null || str.Length == 0) {
+            return 0;
+        }
+        
+        var currentLen = 1; 
+        var maxLen = 1; 
         
         /* Initialize the visited array as -1, -1 is used to
             indicate that character has not been visited yet. */
